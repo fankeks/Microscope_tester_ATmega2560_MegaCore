@@ -1,28 +1,35 @@
 #include <Arduino.h>
-#include <My_Timer.h>
 
 
 #define LEDPIN PIN_PB7
-int Delay = 500;
 
 
 void setup()
 {
   // Частота МК 16 МГц
-  Serial.begin(9600);
   pinMode(LEDPIN, OUTPUT);
-  Timer1::begin(15000, 1024);
-  Timer1::start();
+
+  cli();
+  UCSR0B = (1 << RXEN0) | (1 << TXEN0);   // Turn on the transmission and reception circuitry
+  UCSR0C = (1 << UCSZ00) | (1 << UCSZ01); // 8 бит сообщение
+  UCSR0C &= ~(1 << USBS0);                // 1 стоповый бит
+  // Скорость
+  UBRR0H = (9600 >> 8);                   // Load upper 8-bits of the baud rate value into the high byte of the UBRR register
+  UBRR0L = 9600;                          // Load lower 8-bits of the baud rate value into the low byte of the UBRR register
+
+  UCSR0B |= (1 << RXCIE0);                // Enable the USART Receive Complete interrupt (USART_RX)
+  sei();
 }
 
 
 void loop()
 {
-  digitalWrite(LEDPIN, !digitalRead(LEDPIN));
-  delay(Delay);
+  
 }
 
-ISR(TIMER1_COMPA_vect)
+
+ISR(USART0_RX_vect)
 {
-  Serial.printf("1\n");
+  char ch = UDR0;           // Считать данные
+  digitalWrite(LEDPIN, !digitalRead(LEDPIN));
 }
