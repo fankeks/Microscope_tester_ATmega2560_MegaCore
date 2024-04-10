@@ -5,9 +5,9 @@
 class Discrete_Input_Structure
 {
 private:
-    word start_addres; // Адрес первого эллемента
-    byte n; // Колличество пинов
-    byte* pins; // Массив пинов
+    word __start_addres; // Адрес первого эллемента
+    byte __n; // Колличество пинов
+    byte* __pins; // Массив пинов
 public:
     Discrete_Input_Structure(word start_addres, byte n, byte* pins);
     bool is_available(word addres); // Проверка адреса на соответствие

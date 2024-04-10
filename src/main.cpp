@@ -1,21 +1,47 @@
 #include <Arduino.h>
 #include "config.h"
 
+
+uint8_t readDigital(uint8_t fc, uint16_t address, uint16_t length);
+
  
 void setup(void)
 {
     // Инициализация датчиков
     for(int i=0; i<SENSOR_NUMBRS; i++)
     {
-        pinMode(sensors.get(i+SENSOR_START_ADDRES), INPUT);
+        pinMode(SENSORS.get(i + SENSOR_START_ADDRES), INPUT);
     }
+
+    // Подключаем обработчики запросов Modbus RTU
+    SLAVE.cbVector[CB_READ_DISCRETE_INPUTS] = readDigital;
+
     // Инициализация порта
-    Serial.begin(9600);
+    SERIAL_PORT.begin(SERIAL_BAUDRATE);
+    SLAVE.begin(SERIAL_BAUDRATE);
 }
 
 
 void loop()
 {
-    Serial.write((char) digitalRead(sensors.get(20+SENSOR_START_ADDRES)));
-    delay(500);
+    SLAVE.poll();
+}
+
+
+// Handle the function codes Read Input Status (FC=01/02) and write back the values from the digital pins (input status).
+uint8_t readDigital(uint8_t fc, uint16_t address, uint16_t length)
+{
+    // Check if the requested addresses exist in the array
+    if (!SENSORS.is_available(address) || !SENSORS.is_available(address + length - 1))
+    {
+        return STATUS_ILLEGAL_DATA_ADDRESS;
+    }
+
+    // Read the digital inputs.
+    for (unsigned int i = address; i<(address + length); i++)
+    {
+        // Write the state of the digital pin to the response buffer.
+        SLAVE.writeDiscreteInputToBuffer(i-address, digitalRead(SENSORS.get(i)));
+    }
+    return STATUS_OK;
 }
