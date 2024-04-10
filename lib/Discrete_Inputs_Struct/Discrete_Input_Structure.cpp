@@ -10,7 +10,7 @@ Discrete_Input_Structure::Discrete_Input_Structure(word start_addres, byte n, by
 
 bool Discrete_Input_Structure::is_available(word addres)
 {
-    if((__start_addres <= addres) & (addres <= (__start_addres + __n))) return true;
+    if((__start_addres <= addres) & (addres < (__start_addres + __n))) return true;
     return false;
 }
 
