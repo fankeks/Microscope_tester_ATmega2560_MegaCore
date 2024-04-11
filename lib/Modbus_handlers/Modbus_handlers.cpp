@@ -5,7 +5,7 @@
 uint8_t readDigital(uint8_t fc, uint16_t address, uint16_t length)
 {
     // Check if the requested addresses exist in the array
-    if (!SENSORS.is_available(address) || !SENSORS.is_available(address + length - 1))
+    if (!POSITION_SENSORS.is_available(address) || !POSITION_SENSORS.is_available(address + length - 1))
     {
         return STATUS_ILLEGAL_DATA_ADDRESS;
     }
@@ -14,7 +14,7 @@ uint8_t readDigital(uint8_t fc, uint16_t address, uint16_t length)
     for (unsigned int i = address; i<(address + length); i++)
     {
         // Write the state of the digital pin to the response buffer.
-        SLAVE.writeDiscreteInputToBuffer(i-address, digitalRead(SENSORS.get(i)));
+        SLAVE.writeDiscreteInputToBuffer(i-address, digitalRead(POSITION_SENSORS.get(i)));
     }
     return STATUS_OK;
 }

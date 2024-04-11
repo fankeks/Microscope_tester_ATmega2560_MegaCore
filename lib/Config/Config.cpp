@@ -6,7 +6,7 @@ Modbus SLAVE(SERIAL_PORT, SLAVE_ID, RS485_CTRL_PIN);
 
 
 // Sensor object
-byte pins[SENSOR_NUMBRS] = {
+byte pins[POSITION_SENSOR_NUMBRS] = {
     PIN_PA0,
     PIN_PA1,
     PIN_PA2,
@@ -32,4 +32,4 @@ byte pins[SENSOR_NUMBRS] = {
     PIN_PF6,
     PIN_PF7,
 };
-Discrete_Input_Structure SENSORS(SENSOR_START_ADDRES, SENSOR_NUMBRS, pins);
+PositionSensors POSITION_SENSORS(POSITION_SENSOR_START_ADDRES, POSITION_SENSOR_NUMBRS, pins);
