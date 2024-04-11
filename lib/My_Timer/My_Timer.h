@@ -1,4 +1,6 @@
-#pragma once
+#ifndef MY_TIMER_H
+#define MY_TIMER_H
+
 #include <Arduino.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -10,3 +12,5 @@ namespace Timer1
     void start();
     void stop();
 }
+
+#endif
