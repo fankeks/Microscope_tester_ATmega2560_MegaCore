@@ -30,7 +30,7 @@ DI_register_PS::DIRegisterPS* create_regs(DI_register_PS::DIRegisterPS* regs)
 {
     for (int i=0; i<POSITION_SENSOR_NUMBRS; i++)
     {
-        regs[i].__object = POSITION_SENSORS[i];
+        regs[i].__object = &(POSITION_SENSORS[i]);
         regs[i].__addr = POSITION_SENSOR_START_ADDRES + i;
         regs[i].__value = 0;
     }

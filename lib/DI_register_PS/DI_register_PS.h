@@ -7,7 +7,7 @@ namespace DI_register_PS
 {
     struct DIRegisterPS
     {
-        byte __object;
+        byte* __object;
         word __addr;
         byte __value;
     };

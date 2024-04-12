@@ -16,7 +16,7 @@ namespace DI_register_PS
 
     byte run(DIRegisterPS* reg)
     {
-        reg -> __value = digitalRead(reg -> __object);
+        reg -> __value = digitalRead(*(reg -> __object));
         return 1;
     }
 }

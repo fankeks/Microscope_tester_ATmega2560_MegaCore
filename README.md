@@ -8,7 +8,7 @@ https://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
 # Description of the register logic  
 <pre><code>struct Reg  
 {
-    object - The object that the register interacts with  
+    *object - The object that the register interacts with  
     addr - Register address  
     value - The value of the register  
 }  
