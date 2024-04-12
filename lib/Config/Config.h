@@ -3,10 +3,12 @@
 
 #include <Arduino.h>
 #include <ModbusSlave.h>
-#include <Position_sensors.h>
 
 // MCU setup
 #define F_MCU 16000000
+
+// Peripherals for testing
+#define LEDPIN PIN_PL1
 
 // Modbus RTU slave settings
 #define SLAVE_ID 1                 // The Modbus slave ID, change to the ID you want to use.
@@ -15,9 +17,9 @@
 #define SERIAL_PORT Serial         // Serial port to use for RS485 communication, change to the port you're using.
 extern Modbus SLAVE;
 
-// Discrete Inputs
+// Position sensors
 #define POSITION_SENSOR_NUMBRS 24
 #define POSITION_SENSOR_START_ADDRES 1
-extern PositionSensors POSITION_SENSORS;
+extern byte POSITION_SENSORS[POSITION_SENSOR_NUMBRS];
 
 #endif

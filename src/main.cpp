@@ -6,11 +6,13 @@
  
 void setup(void)
 {
+    // Инициализация переферии для тестирования
+    pinMode(LEDPIN, OUTPUT);
+
     // Инициализация датчиков положения
     for(int i=0; i<POSITION_SENSOR_NUMBRS; i++)
     {
-        pinMode(POSITION_SENSORS.get_pin(i), INPUT);
-        attachInterrupt(digitalPinToInterrupt(POSITION_SENSORS.get_pin(i)), POSITION_SENSORS_INTERRUPT_HANDLERS[i], RISING);
+        pinMode(POSITION_SENSORS[i], INPUT);
     }
 
     // Подключаем обработчики запросов Modbus RTU

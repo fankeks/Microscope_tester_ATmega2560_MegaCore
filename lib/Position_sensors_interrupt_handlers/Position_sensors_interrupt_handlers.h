@@ -11,6 +11,7 @@ PIN_PA4,
 PIN_PA5,
 PIN_PA6,
 PIN_PA7,
+
 PIN_PC0,
 PIN_PC1,
 PIN_PC2,
@@ -19,6 +20,7 @@ PIN_PC4,
 PIN_PC5,
 PIN_PC6,
 PIN_PC7,
+
 PIN_PF0,
 PIN_PF1,
 PIN_PF2,
@@ -56,6 +58,6 @@ void interrupt_PF5();
 void interrupt_PF6();
 void interrupt_PF7();
 
-extern void (*POSITION_SENSORS_INTERRUPT_HANDLERS[POSITION_SENSOR_NUMBRS])(void);
+extern void (*POSITION_SENSORS_INTERRUPT_HANDLERS[POSITION_SENSOR_NUMBRS])();
 
 #endif

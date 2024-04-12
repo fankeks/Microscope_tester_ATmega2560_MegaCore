@@ -3,11 +3,11 @@
 
 void interrupt_PA0()
 {
-
+    digitalWrite(LEDPIN, !digitalRead(LEDPIN));
 }
 void interrupt_PA1()
 {
-    
+    digitalWrite(LEDPIN, !digitalRead(LEDPIN));
 }
 void interrupt_PA2()
 {
@@ -101,7 +101,7 @@ void interrupt_PF7()
 }
 
 
-void (*POSITION_SENSORS_INTERRUPT_HANDLERS[POSITION_SENSOR_NUMBRS])(void) = 
+void (*POSITION_SENSORS_INTERRUPT_HANDLERS[POSITION_SENSOR_NUMBRS])() = 
 {
     interrupt_PA0,
     interrupt_PA1,
