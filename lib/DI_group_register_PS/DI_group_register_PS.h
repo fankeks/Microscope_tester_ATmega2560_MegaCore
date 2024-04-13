@@ -7,13 +7,13 @@
 class PositionSensorsDIRegisters
 {
 private:
-    struct DI_register_PS::DIRegisterPS* __regs;       // Массив регистров
+    struct DI_register_PS::Register* __regs;       // Массив регистров
     byte __n;                                          // Колличество регистров
 public:
-    PositionSensorsDIRegisters(DI_register_PS::DIRegisterPS regs[], byte n);
+    PositionSensorsDIRegisters(DI_register_PS::Register regs[], byte n);
     bool is_available(word addres);                         // Проверка адреса на соответствие
-    DI_register_PS::DIRegisterPS get(word addres);          // Получение регистра по адресу
-    DI_register_PS::DIRegisterPS get_pin(byte ind);         // Получение регистра по индексу
+    DI_register_PS::Register get(word addres);          // Получение регистра по адресу
+    DI_register_PS::Register get_pin(byte ind);         // Получение регистра по индексу
 };
 
 void create_regs();

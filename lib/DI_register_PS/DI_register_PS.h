@@ -5,16 +5,17 @@
 
 namespace DI_register_PS
 {
-    struct DIRegisterPS
+    struct Register
     {
         byte* __object;
         word __addr;
         byte __value;
     };
 
-    byte get(DIRegisterPS* reg);
-    bool set(DIRegisterPS* reg, byte value);
-    byte run(DIRegisterPS* reg);
+    byte update(Register* reg);
+    byte get(Register* reg);
+    byte set(Register* reg, byte value);
+    byte step(Register* reg);
 }
 
 #endif

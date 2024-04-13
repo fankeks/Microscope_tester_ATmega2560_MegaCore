@@ -1,7 +1,7 @@
 #include "DI_group_register_PS.h"
 
 
-PositionSensorsDIRegisters::PositionSensorsDIRegisters(DI_register_PS::DIRegisterPS* regs, byte n)
+PositionSensorsDIRegisters::PositionSensorsDIRegisters(DI_register_PS::Register* regs, byte n)
 {
     __regs = regs;
     __n = n;
@@ -15,18 +15,18 @@ bool PositionSensorsDIRegisters::is_available(word addres)
     return false;
 }
 
-DI_register_PS::DIRegisterPS PositionSensorsDIRegisters::get(word addres)
+DI_register_PS::Register PositionSensorsDIRegisters::get(word addres)
 {
     return __regs[addres - __regs[0].__addr];
 }
 
-DI_register_PS::DIRegisterPS PositionSensorsDIRegisters::get_pin(byte ind)
+DI_register_PS::Register PositionSensorsDIRegisters::get_pin(byte ind)
 {
     return __regs[0];
 }
 
-DI_register_PS::DIRegisterPS regs[POSITION_SENSOR_NUMBRS];
-DI_register_PS::DIRegisterPS* create_regs(DI_register_PS::DIRegisterPS* regs)
+DI_register_PS::Register regs[POSITION_SENSOR_NUMBRS];
+DI_register_PS::Register* create_regs(DI_register_PS::Register* regs)
 {
     for (int i=0; i<POSITION_SENSOR_NUMBRS; i++)
     {

@@ -3,18 +3,26 @@
 
 namespace DI_register_PS
 {
-    byte get(DIRegisterPS* reg)
+    byte update(Register* reg)
     {
+        reg -> __value = digitalRead(*(reg -> __object));
+        return 1;
+    }
+
+    byte get(Register* reg)
+    {
+        update(reg);
         return reg -> __value;
     }
 
-    bool set(DIRegisterPS* reg, byte value)
+    byte set(Register* reg, byte value)
     {
+        update(reg);
         reg -> __value = value;
-        return true;
+        return 1;
     }
 
-    byte run(DIRegisterPS* reg)
+    byte step(Register* reg)
     {
         reg -> __value = digitalRead(*(reg -> __object));
         return 1;
