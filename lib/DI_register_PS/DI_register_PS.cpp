@@ -17,8 +17,6 @@ namespace DI_register_PS
 
     byte set(Register* reg, byte value)
     {
-        update(reg);
-        reg -> __value = value;
         return 1;
     }
 

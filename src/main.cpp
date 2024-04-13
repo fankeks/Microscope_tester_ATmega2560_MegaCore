@@ -17,6 +17,7 @@ void setup(void)
 
     // Подключаем обработчики запросов Modbus RTU
     SLAVE.cbVector[CB_READ_DISCRETE_INPUTS] = readDigital;
+    SLAVE.cbVector[CB_READ_INPUT_REGISTERS] = readInput;
 
     // Инициализация порта
     SERIAL_PORT.begin(SERIAL_BAUDRATE);
