@@ -5,7 +5,7 @@ namespace DI_register_PS
 {
     byte update(Register* reg)
     {
-        reg -> __value = digitalRead(*(reg -> __object));
+        reg -> __value = Position_Sensor::read(reg -> __object);
         return 1;
     }
 
@@ -22,7 +22,7 @@ namespace DI_register_PS
 
     byte step(Register* reg)
     {
-        reg -> __value = digitalRead(*(reg -> __object));
+        reg -> __value = Position_Sensor::read(reg -> __object);
         return 1;
     }
 }

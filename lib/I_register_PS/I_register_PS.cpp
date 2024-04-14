@@ -8,7 +8,7 @@ namespace I_register_PS
         byte pin_value;
         for(byte i=0; i < (reg -> n); i++)
         {
-            pin_value = digitalRead((reg -> __object)[i]);
+            pin_value = Position_Sensor::read(reg -> __object + i);
             if(pin_value == 0) reg -> __value &= ~(1 << i);
             else reg -> __value |= (1 << i);
         }

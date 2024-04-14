@@ -15,6 +15,6 @@ https://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
   
 update(Reg* ) - Register status update function
 get(Reg* ) - The function of getting the register value  
-set(Reg* ) - The function of setting a value to a register  
+set(Reg*, value) - The function of setting a value to a register  
 step(Reg* ) - A function that implements register logic
 </code></pre>

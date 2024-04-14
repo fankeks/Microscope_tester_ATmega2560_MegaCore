@@ -12,7 +12,7 @@ void setup(void)
     // Инициализация датчиков положения
     for(int i=0; i<POSITION_SENSOR_NUMBRS; i++)
     {
-        pinMode(POSITION_SENSORS[i], INPUT);
+        pinMode(POSITION_SENSORS[i].__pin, INPUT);
     }
 
     // Подключаем обработчики запросов Modbus RTU

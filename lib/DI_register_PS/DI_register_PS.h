@@ -7,7 +7,7 @@ namespace DI_register_PS
 {
     struct Register
     {
-        byte* __object;
+        Position_Sensor::Sensor* __object;
         word __addr;
         byte __value;
     };

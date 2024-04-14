@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <ModbusSlave.h>
+#include <Position_sensor.h>
 
 // MCU setup
 #define F_MCU 16000000
@@ -20,6 +21,6 @@ extern Modbus SLAVE;
 // Position sensors
 #define POSITION_SENSOR_NUMBRS 24
 #define POSITION_SENSOR_START_ADDRES 1
-extern byte POSITION_SENSORS[POSITION_SENSOR_NUMBRS];
+extern Position_Sensor::Sensor POSITION_SENSORS[POSITION_SENSOR_NUMBRS];
 
 #endif
