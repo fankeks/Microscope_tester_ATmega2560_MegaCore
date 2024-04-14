@@ -23,4 +23,9 @@ extern Modbus SLAVE;
 #define POSITION_SENSOR_START_ADDRES 1
 extern Position_Sensor::Sensor POSITION_SENSORS[POSITION_SENSOR_NUMBRS];
 
+// Captures
+#define CAPTURES_NUMBERS 8
+#define CAPTURES_START_ADDRES 1
+extern byte CAPTURES[CAPTURES_NUMBERS];
+
 #endif

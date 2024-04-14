@@ -16,9 +16,18 @@ void setup(void)
         Position_Sensor::attachinterrupt(POSITION_SENSORS + i, POSITION_SENSORS_INTERRUPT_HANDLERS[i]);
     }
 
+    // Инициализация захватов
+    for(byte i=0; i<CAPTURES_NUMBERS; i++)
+    {
+        pinMode(CAPTURES[i], OUTPUT);
+    }
+    create_C_GROUP_REGISTERS_C(C_GROUP_REGISTERS_C);
+
     // Подключаем обработчики запросов Modbus RTU
     SLAVE.cbVector[CB_READ_DISCRETE_INPUTS] = readDigital;
     SLAVE.cbVector[CB_READ_INPUT_REGISTERS] = readInput;
+    SLAVE.cbVector[CB_READ_COILS] = readCoil;
+    SLAVE.cbVector[CB_WRITE_COILS] = writeCoil;
 
     // Инициализация порта
     SERIAL_PORT.begin(SERIAL_BAUDRATE);

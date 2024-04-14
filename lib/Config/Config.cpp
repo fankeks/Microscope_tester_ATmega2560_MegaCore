@@ -61,3 +61,15 @@ Position_Sensor::Sensor POSITION_SENSORS[POSITION_SENSOR_NUMBRS] = {
     PS_23,
     PS_24,
 };
+
+// Captures object
+byte CAPTURES[CAPTURES_NUMBERS] = {
+    LEDPIN,
+    PIN_PJ1,
+    PIN_PJ2,
+    PIN_PJ3,
+    PIN_PJ4,
+    PIN_PJ5,
+    PIN_PJ6,
+    PIN_PJ7,
+};
