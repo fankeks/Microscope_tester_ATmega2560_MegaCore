@@ -10,9 +10,10 @@ void setup(void)
     pinMode(LEDPIN, OUTPUT);
 
     // Инициализация датчиков положения
-    for(int i=0; i<POSITION_SENSOR_NUMBRS; i++)
+    for(byte i=0; i<POSITION_SENSOR_NUMBRS; i++)
     {
         pinMode(POSITION_SENSORS[i].__pin, INPUT);
+        Position_Sensor::attachinterrupt(POSITION_SENSORS + i, POSITION_SENSORS_INTERRUPT_HANDLERS[i]);
     }
 
     // Подключаем обработчики запросов Modbus RTU
@@ -27,5 +28,9 @@ void setup(void)
 
 void loop()
 {
+    for (byte i=0; i< POSITION_SENSOR_NUMBRS; i++)
+    {
+        Position_Sensor::read(POSITION_SENSORS + i);
+    }
     SLAVE.poll();
 }
