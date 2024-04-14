@@ -64,7 +64,7 @@ Position_Sensor::Sensor POSITION_SENSORS[POSITION_SENSOR_NUMBRS] = {
 
 // Captures object
 byte CAPTURES[CAPTURES_NUMBERS] = {
-    LEDPIN,
+    PIN_PJ0,
     PIN_PJ1,
     PIN_PJ2,
     PIN_PJ3,
